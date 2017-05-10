@@ -71,3 +71,11 @@ padding-bottom: 10px;*/
 .form-group-addon{
 	padding-left: -20px;
 }
+#suggest{
+    background:#FFF;
+    width:800px;
+}
+#suggest tr:nth-of-type(odd){
+
+    background:#CCC;
+}

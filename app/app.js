@@ -23,9 +23,9 @@ app.config(['$routeProvider',
                 templateUrl: 'partials/dashboard.html',
                 controller: 'authCtrl'
             })
-			.when('/suggestion', {
+			.when('/suggestionForm', {
                 title: 'Suggestions',
-                templateUrl: 'partials/suggestion.html',
+                templateUrl: 'partials/suggestionForm.html',
                 controller: 'authCtrl'
             })
             .when('/', {

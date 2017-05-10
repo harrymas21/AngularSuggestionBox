@@ -77,7 +77,7 @@ $app->post('/signUp', function() use ($app) {
         }            
     }else{
         $response["status"] = "error";
-        $response["message"] = "An user with the provided phone or email exists!";
+        $response["message"] = "A user with the provided phone or email exists!";
         echoResponse(201, $response);
     }
 });

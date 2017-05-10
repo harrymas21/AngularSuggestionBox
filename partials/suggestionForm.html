@@ -4,7 +4,7 @@
             <i class="ace-icon fa fa-home home-icon"></i>
             <a href="#">Home</a>
         </li>
-        <li class="active">Suggestions</li>
+        <li class="active">Dashboard</li>
     </ul>
 </div>
 <div class="page-content">
@@ -21,10 +21,21 @@
                         <div class="space-16"></div>
                         E-MAIL: {{email}}
                         <br/>
-						<!--form goes here-->
-						1111
-<div ng-include src='"partials/templates/suggestionForm.html"'></div>
-1111
+						<!--start of insert form--->
+						<form class="form-horizontal" name="empList" id="empForm" ng-submit="insertInfo(sugg);">
+<h3 class="text-center">Post a suggestion</h3>
+<div class="form-group">
+<label for="Suggestion">Suggestion:</label>
+<input type="textarea" name="emp_name" class="form-control" placeholder="Enter Suggestion" ng-model="sugg.suggestion" autofocus required />
+</div>
+<div class="form-group">
+<p class="text-danger" ng-show="empList.emp_name.$invalid && empList.emp_name.$dirty">Suggestion field is Empty!</p>
+</div>
+<div class="form-group">
+<button class="btn btn-warning" ng-disabled="empList.$invalid">Add Into Database</button>
+</div>
+</form>
+						<!--end of insert form-->
 						<br/>
 						<button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="logout()">
                                         Log Out
