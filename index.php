@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
           <title>Suggestion-Box</title>
           <!-- Bootstrap -->
+		  <link href="https://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
           <link href="css/bootstrap.min.css" rel="stylesheet">
 		  <link href="css/font-awesome.min.css" rel="stylesheet">
             <link href="css/custom.css" rel="stylesheet">

@@ -2,7 +2,7 @@
     <ul class="breadcrumb">
         <li>
             <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="#">Home</a>
+            <a href="#/dashboard">Home</a>
         </li>
         <li class="active">Dashboard</li>
     </ul>
@@ -21,63 +21,64 @@
                         <div class="space-16"></div>
                         E-MAIL: {{email}}
                         <br/>
-						<!----------start-->
-						<!--div class="alert alert-default navbar-brand search-box">
-<button class="btn btn-primary" ng-show="show_form" ng-click="formToggle()">Add Employee <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-</div>
-<div class="alert alert-default input-group search-box">
-<span class="input-group-btn">
-<input type="text" class="form-control" placeholder="Search Employee Details Into Database..." ng-model="search_query">
-</span>
-</div>
-</div>
-</nav>
-<div class="col-md-6 col-md-offset-3">
-
-<!-- Include form template which is used to insert data into database >
-<div ng-include src="'partials/suggestionForm.html'"></div>
-
-<!-- Include form template which is used to edit and update data into database >
-<div ng-include src="''"></div>
-</div>
-<div class="clearfix"></div>
-
-<!-- Table to show employee detalis >
-<div class="container wrapper" ng-controller="DbController">
-<h1 class="text-center">AngularJS CRUD Operations Demo</h1>
-<nav class="navbar navbar-default">
-<div class="navbar-header"-->
 <h2 class="text-center">Suggestions</h2>
-<div class="table-responsive">
-<table class="table table-hover" id="suggest">
-<tr>
-<th>Suggestion</th>
-<th>Likes</th>
-<th>Dislikes</th>
-<th>Updated at</th>
-<th></th>
-<th></th>
-</tr>
-<tr ng-repeat="detail in details">
-<td>{{detail.suggestion}}</td>
-<td>{{detail.likes}}</td>
-<td>{{detail.dislike}}</td>
-<td>{{detail.timestamp|date:format:medium}}</td>
+<div class="comments">
+                            <ul class="list-group" ng-repeat="detail in details|firstPage:currentPage*pageSize|limitTo:pageSize">
+                                <strong style="color: #6b9dbb">
+								{{detail.timestamp|date:'medium'}} &nbsp
+                                </strong>
+								<li class="list-group-item">
+								<table id="suggest">
+								<tr>
+								<td>{{detail.suggestion}}</td>
 <td>
-<button class="btn btn-warning" ng-click="like(detail)" title="Like"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+<!--button class="btn btn-warning" ng-click="like(detail)" title="Like"><span class="glyphicon glyphicon-thumbs-up"></span></button-->
+<div class="btn-group">
+<a id="myLink1" href="" ng-click="like(detail)" class="btn btn-white btn-default active">
+<i class="fa fa-thumbs-up" aria-hidden="true"></i> Like: {{detail.likes}}
+</a>
+</div>
 </td>
 <td>
-<button class="btn btn-danger" ng-click="dislike(detail)" title="Dislike"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+<!--button class="btn btn-danger" ng-click="dislike(detail)" title="Dislike"><span class="glyphicon glyphicon-thumbs-down"></span></button-->
+<div class="btn-group">
+<a id="myLink2" href="" ng-click="dislike(detail)" class="btn btn-white btn-default active">
+<i class="fa fa-thumbs-down" aria-hidden="true"></i> Dislike : {{detail.dislike}}
+</a>
+</div>
 </td>
 </tr>
 </table>
-</div>
+								</li>
+                            </ul>
+							<div class="pagination">
+								<button ng-disabled="currentPage==0" ng-click="currentPage=currentPage-1"><</button>
+								<span>
+								{{currentPage+1}}/{{numberOfPages()}}
+								</span>
+								<button ng-disabled="currentPage>=names.length/pageSize-1" ng-click="currentPage=currentPage+1">></button>
+								</div>
+                        </div>
 </div>
 </div>
 						<!---------end----->
-						<a href="#/suggestionForm">
-						<img src="images/suggestionbox1.png" height="80" width="110" alt="Click HERE to insert suggestion">
-						</a>
+						<!--a href="#/suggestionForm">
+						<!--img src="images/suggestionbox1.png" height="80" width="110" alt="Click HERE to insert suggestion">
+						</a-->
+						<!--start of insert form--->
+						<form class="form-horizontal" name="empList" id="empForm" ng-submit="insertInfo(sugg);">
+<h2 class="text-center">Post Suggestion</h2>
+<div class="form-group">
+<input type="textarea" name="emp_name" class="form-control" placeholder="Enter Your Suggestion Here" ng-model="sugg.suggestion" autofocus required />
+</div>
+<div class="form-group">
+<p class="text-danger" ng-show="empList.emp_name.$invalid && empList.emp_name.$dirty">Suggestion field is Empty!</p>
+</div>
+<div class="form-group">
+<button class="btn btn-warning" ng-disabled="empList.$invalid">Send suggestion</button>
+</div>
+</form>
+						<!--end of insert form-->
 						<button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="logout()">
                                         Log Out
                                     </button>

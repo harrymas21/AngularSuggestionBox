@@ -73,9 +73,14 @@ padding-bottom: 10px;*/
 }
 #suggest{
     background:#FFF;
-    width:800px;
+    width:900px;
+	table-layout:fixed;
 }
-#suggest tr:nth-of-type(odd){
-
-    background:#CCC;
+#suggest td{
+width:300px;
+word-wrap:break-word;
+white-space:-o-pre-wrap;
+white-space:pre-wrap;
+white-space:-pre-wrap;
+white-space:-moz-pre-wrap;
 }
