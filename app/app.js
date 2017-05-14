@@ -1,3 +1,4 @@
+//HARRY MASIDZA
 var app = angular.module('myApp', ['ngRoute', 'ngAnimate', 'toaster']);
 
 app.config(['$routeProvider',
@@ -21,11 +22,6 @@ app.config(['$routeProvider',
             .when('/dashboard', {
                 title: 'Dashboard',
                 templateUrl: 'partials/dashboard.html',
-                controller: 'authCtrl'
-            })
-			.when('/suggestionForm', {
-                title: 'Suggestions',
-                templateUrl: 'partials/suggestionForm.html',
                 controller: 'authCtrl'
             })
             .when('/', {

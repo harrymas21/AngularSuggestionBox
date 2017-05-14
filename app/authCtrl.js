@@ -28,14 +28,18 @@ $scope.show_form = true;
 function getInfo(){
 // Sending request to suggestionDetails files
 $http.post('api/crud/suggestionDetails.php').success(function(data){
-// Stored the returned data into scope
 $scope.details = data;
 });
+}
+$scope.currentPage = 0;
+$scope.pageSize = 5;
+$scope.numberOfPages = function(){
+return Math.ceil($scope.details.length/$scope.pageSize);
 }
 	$scope.insertInfo = function(info){
 	$http.post('api/crud/insertSuggestion.php',{"sugg_text":info.suggestion}).success(function(data){
 	if (data == true) {
-	//getInfo();
+	getInfo();
 	// Hide details insertion form
 	//$('#suggestionForm').css('display', 'none');
 	$location.path('dashboard');
@@ -66,4 +70,11 @@ getInfo();
             $location.path('login');
         });
     }
+});
+
+app.filter('firstPage',function(){
+return function(input, start){
+start+=start;
+return input.slice(start);
+}
 });
